@@ -3,12 +3,16 @@ FROM docker:17.05.0-ce-git
 ENV GOLANG_VERSION 1.9.2
 
 RUN apk add --no-cache --virtual .build-deps \
-            ca-certificates \
-    		bash \
+            bash \
+    		ca-certificates \
     		gcc \
-    		musl-dev \
-    		openssl \
     		go \
+    		groff \
+    		less \
+            musl-dev \
+            openssl \
+            py-pip \
+            python \
     	; \
     	export \
         # set GOROOT_BOOTSTRAP such that we can actually build Go
@@ -35,7 +39,8 @@ RUN apk add --no-cache --virtual .build-deps \
         	./make.bash; \
         	\
         	rm -rf /go-alpine-patches; \
-        	apk del .build-deps; \
+        	pip install awscli; \
+        	apk del .build-deps py-pip ; \
         	\
         	export PATH="/usr/local/go/bin:$PATH"; \
         	go version
