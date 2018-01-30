@@ -40,7 +40,7 @@ RUN apk add --no-cache --virtual .build-deps \
         	rm -rf /go-alpine-patches; \
         	pip install awscli; \
         	apk del .build-deps py-pip ; \
-        	apk add --no-cache python ca-certificates openssl;  \
+        	apk add --no-cache python ca-certificates openssl gettext;  \
         	\
         	export PATH="/usr/local/go/bin:$PATH"; \
         	go version
