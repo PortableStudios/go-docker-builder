@@ -12,7 +12,6 @@ RUN apk add --no-cache --virtual .build-deps \
             musl-dev \
             openssl \
             py-pip \
-            python \
     	; \
     	export \
         # set GOROOT_BOOTSTRAP such that we can actually build Go
@@ -41,6 +40,7 @@ RUN apk add --no-cache --virtual .build-deps \
         	rm -rf /go-alpine-patches; \
         	pip install awscli; \
         	apk del .build-deps py-pip ; \
+        	apk add --no-cache python ca-certificates openssl;  \
         	\
         	export PATH="/usr/local/go/bin:$PATH"; \
         	go version
