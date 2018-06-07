@@ -1,6 +1,6 @@
-FROM docker:17.05.0-ce-git
+FROM docker:18.05.0-ce-git
 
-ENV GOLANG_VERSION 1.9.2
+ENV GOLANG_VERSION 1.10.2
 
 RUN apk add --no-cache --virtual .build-deps \
             bash \
